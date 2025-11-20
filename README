@@ -1,0 +1,30 @@
+Summary of the Sentiment Analysis Process
+
+The following steps were successfully executed to perform sentiment analysis on the 'OriginalTweet' column:
+
+Text Preprocessing: The 'OriginalTweet' column was cleaned and preprocessed. This involved:
+
+Converting text to lowercase.
+Removing punctuation, special characters, and numbers.
+Applying stemming using PorterStemmer to reduce words to their root form.
+Removing common English stopwords. The processed text was stored in a new column called 'Transformed_Tweet'.
+Feature Extraction (TF-IDF Vectorization): The preprocessed text in 'Transformed_Tweet' was converted into numerical features using TfidfVectorizer with a maximum of 5000 features. This resulted in the feature matrix X and the target vector y (from the 'Sentiment' column).
+
+Data Splitting: The dataset (X and y) was split into training and testing sets (X_train, X_test, y_train, y_test) with a 80/20 ratio, ensuring stratification to maintain the distribution of sentiment classes in both sets.
+
+Model Training: A LogisticRegression model was initialized and trained on the X_train and y_train datasets.
+
+Model Evaluation: The trained model was used to predict sentiment on the X_test data (y_pred). The performance of the model was then evaluated using the accuracy_score, which resulted in an accuracy of approximately 0.577.
+
+
+
+Data Analysis Key Findings
+
+Text Preprocessing: The 'OriginalTweet' column underwent cleaning and preprocessing steps including conversion to lowercase, removal of punctuation, special characters, and numbers, application of Porter Stemming, and removal of English stopwords. The processed text was stored in a new column named 'Transformed_Tweet'.
+Feature Extraction: The preprocessed text was converted into numerical features using TF-IDF Vectorization, resulting in a feature matrix X of shape (41157, 5000) and a target vector y of shape (41157,).
+Data Splitting: The dataset was split into training and testing sets with an 80/20 ratio, ensuring stratification. The training feature set X_train had a shape of (32925, 5000), and the testing feature set X_test had a shape of (8232, 5000).
+Model Training and Evaluation: A Logistic Regression model was trained on the preprocessed data. The model achieved an accuracy score of approximately 0.577 on the test set.
+Insights or Next Steps
+
+The current model's accuracy of approximately 57.7% suggests there is room for improvement. Exploring more advanced preprocessing techniques (e.g., lemmatization instead of stemming, more sophisticated tokenization) or feature engineering could potentially boost performance.
+Consider experimenting with more complex machine learning models (e.g., Support Vector Machines, Gradient Boosting) or deep learning approaches (e.g., Recurrent Neural Networks, Transformers) which often yield higher accuracy in sentiment analysis tasks, especially with larger datasets.
